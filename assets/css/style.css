@@ -29,10 +29,18 @@ body {
 /* ~80–85px tall white topline */
 .topline {
   background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);      /* adds a soft glassy blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
   box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06);
   height: 80px;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 }
 
 .topline-inner {
