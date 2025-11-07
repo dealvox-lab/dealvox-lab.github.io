@@ -14,7 +14,6 @@
   <header class="topline">
     <div class="topline-inner">
       <div class="logo">
-        <!-- Use your actual logo image here -->
         <img src="assets/logo.png" alt="Dealvox AI" />
       </div>
 
@@ -35,8 +34,23 @@
         <div class="hero-form-wrapper">
           <form id="ai-test-call-form" class="hero-form-card">
             <h2 class="hero-form-title">Get an Instant Live AI Test Call</h2>
-            
-            <div class="hero-form-divider"></div>
+    
+            <!-- VOICE TOGGLE -->
+            <div class="voice-toggle">
+              <button type="button"
+                      class="voice-option active"
+                      data-voice="male">
+                👨‍💼 Male Voice
+              </button>
+              <button type="button"
+                      class="voice-option"
+                      data-voice="female">
+                👩‍💼 Female Voice
+              </button>
+            </div>
+            <input type="hidden" name="voice" id="voiceInput" value="male" />
+
+           
 
             <!-- PHONE ROW -->
             <div class="phone-row">
@@ -62,23 +76,7 @@
               </div>
             </div>
 
-            <!-- VOICE TOGGLE -->
-            <div class="voice-label">Voice</div>
-            <div class="voice-toggle">
-              <button type="button"
-                      class="voice-option active"
-                      data-voice="male">
-                👨‍💼 Male
-              </button>
-              <button type="button"
-                      class="voice-option"
-                      data-voice="female">
-                👩‍💼 Female
-              </button>
-            </div>
-            <input type="hidden" name="voice" id="voiceInput" value="male" />
-
-           
+            
 
             <!-- SUBMIT BUTTON (DISABLED UNTIL CONSENT) -->
             <button type="submit" id="callButton" class="call-button" disabled>
