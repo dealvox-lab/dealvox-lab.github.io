@@ -3,7 +3,7 @@
 .hero-form-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 6px;
+  margin-top: 10%;
 }
 
 .hero-form-card {
@@ -113,7 +113,7 @@
   align-items: flex-start;
   gap: 8px;
   font-size: 0.8rem;
-  color: #555;
+  color: #2075ae;
   margin-bottom: 10px;
 }
 
