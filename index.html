@@ -2,57 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dealvox AI – AI That Sounds Human</title>
+  <title>Dealvox AI – AI Test Call</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/form.css" />
 </head>
 <body>
 
-  <!-- TOP WHITE BAR -->
+  <!-- TOP WHITE BAR (slightly transparent) -->
   <header class="topline">
     <div class="topline-inner">
-      <!-- Logo takes ~10% of screen width -->
       <div class="logo">
+        <!-- Use your actual logo image here -->
         <img src="assets/logo.png" alt="Dealvox AI" />
       </div>
 
-      <!-- Dark grey hamburger menu -->
       <div class="menu-icon" aria-label="Open navigation" role="button">
         <span></span><span></span><span></span>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION BELOW TOP BAR -->
+  <!-- HERO SECTION WITH BACKGROUND IMAGE & OVERLAY -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-content">
         <h1 class="hero-title">HIRE AI THAT SOUNDS HUMAN</h1>
         <p class="hero-subtitle">No burnout. No turnover. Just consistent revenue.</p>
-        <p class="hero-note">Get a live test call from our AI sales agent in seconds.</p>
+        <p class="hero-note">Get a live AI test call to your number in under a minute.</p>
 
-        <!-- Simple test-call form (hook to your backend/Formspree later) -->
-        <form class="hero-form" method="POST" action="https://example.com/your-form-endpoint">
-          <label>
-            Country / Language
-            <select name="locale">
-              <option value="us-en">US / English</option>
-              <option value="uk-en">UK / English</option>
-              <option value="eu-en">EU / English</option>
-            </select>
-          </label>
+        <!-- AI TEST CALL FORM CARD -->
+        <div class="hero-form-wrapper">
+          <form id="ai-test-call-form" class="hero-form-card">
+            <h2 class="hero-form-title">AI Test Call</h2>
+            <p class="hero-form-subtitle">Get an instant AI voice demo</p>
 
-          <label>
-            Phone number
-            <input type="tel" name="phone" placeholder="(000) 000-00-00" required />
-          </label>
+            <div class="hero-form-divider"></div>
 
-          <button type="submit">Call me</button>
+            <!-- PHONE ROW -->
+            <div class="phone-row">
+              <div class="country-select">
+                <select name="countryCode" id="countryCode">
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <!-- Add any others you actually support -->
+                </select>
+              </div>
 
-          <div class="form-helper">
-            By submitting, I consent to receive AI-automated test calls. No purchase required.
-          </div>
-        </form>
+              <div class="phone-input-wrap">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="(555) 555-5555"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- VOICE TOGGLE -->
+            <div class="voice-label">Voice</div>
+            <div class="voice-toggle">
+              <button type="button"
+                      class="voice-option active"
+                      data-voice="male">
+                👨‍💼 Male
+              </button>
+              <button type="button"
+                      class="voice-option"
+                      data-voice="female">
+                👩‍💼 Female
+              </button>
+            </div>
+            <input type="hidden" name="voice" id="voiceInput" value="male" />
+
+            <!-- CONSENT CHECKBOX -->
+            <label class="consent-label">
+              <input type="checkbox" id="consentCheckbox" />
+              <span>
+                I give permission for an AI agent to place an automated test call to this
+                number and to process my data for this purpose.
+              </span>
+            </label>
+
+            <!-- SUBMIT BUTTON (DISABLED UNTIL CONSENT) -->
+            <button type="submit" id="callButton" class="call-button" disabled>
+              Call me
+            </button>
+
+            <p class="hero-form-note">
+              By submitting, you confirm you are the owner/authorized user of this number.
+            </p>
+
+            <!-- Status message placeholder -->
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -62,46 +111,46 @@
     <article class="feature-card">
       <div class="feature-image">24/7</div>
       <h2 class="feature-title">Always On</h2>
-      <p class="feature-text">AI reps demo-ready 24/7 for inbound and outbound campaigns.</p>
+      <p class="feature-text">Instant demos any time, no calendars or SDRs needed.</p>
     </article>
 
     <article class="feature-card">
       <div class="feature-image">💬</div>
-      <h2 class="feature-title">Human-Like Voice</h2>
-      <p class="feature-text">Natural conversations, custom scripting, and intent detection.</p>
+      <h2 class="feature-title">Human-Like</h2>
+      <p class="feature-text">Natural, latency-optimized conversations tuned to your script.</p>
     </article>
 
     <article class="feature-card">
       <div class="feature-image">📈</div>
-      <h2 class="feature-title">Predictable Costs</h2>
-      <p class="feature-text">No hiring, training, or turnover costs. Simple usage-based pricing.</p>
+      <h2 class="feature-title">Predictable</h2>
+      <p class="feature-text">No burnout, no turnover — just consistent pipeline.</p>
     </article>
   </section>
 
   <!-- TEXT BLOCK -->
   <section class="text-block">
-    <h2>How the Live Test Call Works</h2>
+    <h2>What Happens After You Click Call me</h2>
     <p>
-      Share a number, choose your market, and our AI sales agent places a short,
-      scripted test call so you can hear tone, latency, objection handling, and
-      handoff flow in real time. No integrations, no commitment — just a fast way
-      to validate whether AI callers fit your pipeline.
+      Once you submit your number, our system sends a one-off AI test call
+      using your selected voice. You’ll hear how the agent introduces itself,
+      follows a script, handles simple questions, and wraps with a clear call-to-action.
+      No integrations or commitments — just a live audio preview of what your own AI
+      rep could sound like.
     </p>
   </section>
 
   <!-- CTA -->
   <section class="cta">
     <div class="cta-image">
-      Live dashboard / call analytics preview (replace with real image).
+      Replace this area with a screenshot of your analytics or agent dashboard.
     </div>
     <div>
-      <div class="cta-copy-title">Ready to trial your first AI closer?</div>
+      <div class="cta-copy-title">Ready to deploy AI callers for your sales team?</div>
       <div class="cta-copy-text">
-        Book a 15-minute walkthrough and we’ll spin up a branded AI agent tailored
-        to your pitch, qualification rules, and CRM flow.
+        Book a quick strategy call and we’ll show you how to plug Dealvox AI into your
+        existing funnels, CRMs, and outreach workflows.
       </div>
-      <a href="#"
-         class="cta-button">Book a live demo</a>
+      <a href="#" class="cta-button">Book a live demo</a>
     </div>
   </section>
 
@@ -113,5 +162,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="assets/js/form.js"></script>
 </body>
 </html>
