@@ -100,7 +100,7 @@ body {
   justify-content: center;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 15% 10% 5%;
+  padding: 12% 10% 5%;
 }
 
 .hero-content {
@@ -117,7 +117,7 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.7rem;
   color: rgba(249,250,251,0.9);
   margin-bottom: 8px;
 }
