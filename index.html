@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Landing Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER & HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="top-bar">
+        <div class="logo">Your Logo</div>
+        <div class="menu-icon" aria-label="Open navigation" role="button">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Headline That Explains Your Value</h1>
+        <p class="hero-subtitle">Short supporting sentence encouraging action.</p>
+        <p class="hero-note">Background image dimmed with 60% black overlay for clarity.</p>
+
+        <form class="hero-form" method="POST" action="https://example.com/your-form-endpoint">
+          <label>
+            Full name
+            <input type="text" name="name" placeholder="Jane Doe" required />
+          </label>
+
+          <label>
+            Work email
+            <input type="email" name="email" placeholder="you@company.com" required />
+          </label>
+
+          <label>
+            I’m interested in
+            <select name="interest">
+              <option value="demo">Booking a demo</option>
+              <option value="pricing">Pricing options</option>
+              <option value="partnership">Partnership</option>
+            </select>
+          </label>
+
+          <button type="submit">Get started</button>
+          <div class="form-helper">We respect your privacy. No spam, ever.</div>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <article class="feature-card">
+      <div class="feature-image">Placeholder image</div>
+      <h2 class="feature-title">Benefit One</h2>
+      <p class="feature-text">Explain a key advantage or outcome for the user.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-image">Placeholder image</div>
+      <h2 class="feature-title">Benefit Two</h2>
+      <p class="feature-text">Highlight how your service saves time or money.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-image">Placeholder image</div>
+      <h2 class="feature-title">Benefit Three</h2>
+      <p class="feature-text">Show credibility: quality, support, reliability.</p>
+    </article>
+  </section>
+
+  <!-- TEXT BLOCK -->
+  <section class="text-block">
+    <h2>Explain What Happens Next</h2>
+    <p>
+      Use this space to describe what visitors should expect after they sign up or click.
+      Keep it concise and friendly.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-image">CTA image placeholder</div>
+    <div>
+      <div class="cta-copy-title">Ready to get started?</div>
+      <div class="cta-copy-text">Invite users to take the next step confidently.</div>
+      <a href="#" class="cta-button">Book a demo</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Your Brand. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
