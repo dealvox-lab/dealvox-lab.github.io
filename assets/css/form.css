@@ -9,20 +9,19 @@
 .hero-form-card {
   width: 100%;
   max-width: 540px;
-  background: rgba(5, 8, 22, 0.75);        /* 55% opaque deep navy glass */
-  backdrop-filter: blur(16px);             /* frosted glass blur effect */
-  -webkit-backdrop-filter: blur(16px);     /* Safari support */
+  background: rgba(255, 255, 255, 0.75);        /* 75% opaque deep navy glass */
+  backdrop-filter: blur(8px);             /* frosted glass blur effect */
+  -webkit-backdrop-filter: blur(8px);     /* Safari support */
   border-radius: 22px;
   padding: 22px 24px 18px;
   text-align: left;
   color: #e5e7eb;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero-form-title {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 4px;
 }
@@ -54,7 +53,7 @@
   border: none;
   background-color: #111827;
   color: #e5e7eb;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   appearance: none;
   outline: none;
 }
@@ -66,7 +65,7 @@
   border: none;
   background-color: #111827;
   color: #f9fafb;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   outline: none;
 }
 
