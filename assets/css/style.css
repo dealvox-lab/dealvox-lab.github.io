@@ -373,23 +373,33 @@ body {
 }
 
 .feature-image {
-  background: radial-gradient(circle at top left, rgba(32,117,174,0.18), transparent),
-              radial-gradient(circle at bottom right, rgba(32,117,174,0.12), transparent),
-              #eef5fb;
-  border-radius: 999px;
-  height: 64px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 14px rgba(15,23,42,0.12);
-  padding: 10px 16px;
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background-color: #dbeafe;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .feature-image img {
-  max-height: 30px;
-  width: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.feature-card:hover .feature-image img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.feature-card:hover .feature-image {
+  box-shadow: 0 14px 34px rgba(32, 117, 174, 0.25);
+  transform: translateY(-2px);
 }
 
 .feature-title {
