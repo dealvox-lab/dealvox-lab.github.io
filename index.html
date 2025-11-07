@@ -34,7 +34,7 @@
         <!-- AI TEST CALL FORM CARD -->
         <div class="hero-form-wrapper">
           <form id="ai-test-call-form" class="hero-form-card">
-            <h2 class="hero-form-title">Get an Instant Live AI Test Call to Your Number</h2>
+            <h2 class="hero-form-title">Get an Instant Live AI Test Call</h2>
             
             <div class="hero-form-divider"></div>
 
@@ -78,22 +78,20 @@
             </div>
             <input type="hidden" name="voice" id="voiceInput" value="male" />
 
-            <!-- CONSENT CHECKBOX -->
-            <label class="consent-label">
-              <input type="checkbox" id="consentCheckbox" />
-              <span>
-                I consent to receive AI-automated calls. No purchase required.
-              </span>
-            </label>
+           
 
             <!-- SUBMIT BUTTON (DISABLED UNTIL CONSENT) -->
             <button type="submit" id="callButton" class="call-button" disabled>
               Call me
             </button>
 
-            <p class="hero-form-note">
-              By submitting, I consent to receive AI-automated calls and confirm I'm the owner/authorized user of this number.
-            </p>
+             <!-- CONSENT CHECKBOX -->
+            <label class="consent-label">
+              <input type="checkbox" id="consentCheckbox" />
+              <span>
+                By submitting, I consent to receive AI-automated calls and confirm I'm the owner/authorized user of this number.
+              </span>
+            </label>
 
             <!-- Status message placeholder -->
             <p id="formStatus" class="form-status" aria-live="polite"></p>
