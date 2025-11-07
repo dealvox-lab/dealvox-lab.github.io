@@ -490,6 +490,138 @@ body {
   }
 }
 
+/* ========== AI METRICS SCIENCE-PROOF SECTION ========== */
+
+.ai-metrics {
+  background: #2075ae;
+  color: #ffffff;
+  padding: 56px 0 48px;
+}
+
+.ai-metrics-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.ai-metrics-title {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ai-metrics-subtitle {
+  font-size: 0.95rem;
+  max-width: 640px;
+  margin: 0 auto 26px;
+  color: rgba(240, 249, 255, 0.9);
+  line-height: 1.6;
+}
+
+/* Underline accent */
+.ai-metrics-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 999px;
+  margin: 10px auto 0;
+}
+
+.ai-metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 18px;
+}
+
+.metric-card {
+  max-width: 260px;
+}
+
+/* Circular charts */
+.metric-circle {
+  --fill: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  background:
+    conic-gradient(#ffffff var(--fill), rgba(255,255,255,0.14) var(--fill));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+/* Inner white circle with value */
+.metric-circle-inner {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #2075ae;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Specific fills */
+.metric-32 { --fill: 32%; }
+.metric-121 { --fill: 100%; } /* capped visually, >100% = full ring */
+.metric-74 { --fill: 74%; }
+
+.metric-caption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(234, 244, 255, 0.92);
+}
+
+/* Footnote */
+.ai-metrics-footnote {
+  font-size: 0.7rem;
+  color: rgba(219, 234, 254, 0.85);
+}
+
+/* Hover polish */
+.metric-card:hover .metric-circle {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+  transition: all 0.25s ease;
+}
+.metric-card:hover .metric-circle-inner {
+  transform: scale(1.03);
+  transition: all 0.25s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ai-metrics-inner {
+    padding: 0 16px;
+  }
+  .ai-metrics-grid {
+    gap: 20px;
+  }
+}
+
 /* ================= TEXT BLOCK ================= */
 
 .text-block {
