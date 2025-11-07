@@ -597,7 +597,7 @@ body {
   /* starts empty; --fill will be driven by .animate */
   --fill: 0%;
   background:
-    conic-gradient(#93c5fd var(--fill), rgba(255,255,255,0.14) var(--fill));
+    conic-gradient(#ffffff var(--fill), rgba(255,255,255,0.14) var(--fill));
 }
 
 /* on animate, grow the blue segment (e.g. ~80% of the ring) */
