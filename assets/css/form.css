@@ -93,7 +93,7 @@
   -webkit-backdrop-filter: blur(8px);
   border-radius: 14px;
   padding: 4px;
-  margin: 25 0px;
+  margin: 25px 0px;
 
   /* center the whole toggle container itself */
   width: fit-content;
