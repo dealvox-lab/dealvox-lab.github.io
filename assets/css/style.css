@@ -232,6 +232,127 @@ body {
   font-size: 0.9rem;
 }
 
+/* ========== MAGAZINE FEATURE SECTION ========== */
+
+.sales-mag {
+  background: radial-gradient(circle at top left, rgba(32,117,174,0.14), transparent),
+              radial-gradient(circle at top right, rgba(32,117,174,0.08), transparent),
+              #f5f7fb;
+  padding: 40px 0 34px;
+  border-top: 1px solid rgba(148,163,253,0.16);
+}
+
+.sales-mag-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Small label above title */
+.sales-mag-label {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background-color: rgba(32,117,174,0.08);
+  color: #2075ae;
+  margin-bottom: 8px;
+}
+
+/* Bold magazine-style header */
+.sales-mag-title {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+/* Two-column layout */
+.sales-mag-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: 26px;
+  align-items: flex-start;
+}
+
+/* Left column: highlights */
+.sales-mag-aside {
+  padding: 14px 14px 12px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148,163,253,0.18);
+  box-shadow: 0 10px 26px rgba(15,23,42,0.06);
+}
+
+.mag-tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.mag-fact {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.mag-fact-number {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2075ae;
+}
+
+.mag-fact-text {
+  font-size: 0.78rem;
+  color: #4b5563;
+}
+
+.mag-caption {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Right column: narrative text */
+.sales-mag-body p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .sales-mag {
+    padding: 26px 0 26px;
+  }
+
+  .sales-mag-inner {
+    padding: 0 16px;
+  }
+
+  .sales-mag-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .sales-mag-aside {
+    order: 1;
+  }
+
+  .sales-mag-body {
+    order: 2;
+  }
+}
+
 /* ================= FEATURES ================= */
 
 .features {
