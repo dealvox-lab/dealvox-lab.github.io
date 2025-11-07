@@ -77,23 +77,29 @@
 .voice-label {
   font-size: 0.85rem;
   font-weight: 500;
-  margin-bottom: 6px;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 10px;
+  color: #222;
 }
 
+/* Center the whole toggle block */
 .voice-toggle {
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
+  justify-content: center;             /* centers children inside */
   align-items: center;
-  background: rgba(255, 255, 255, 0.35);      /* светлое стекло */
-  backdrop-filter: blur(8px);                 /* размытие фона */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 14px;
   padding: 4px;
   margin-bottom: 18px;
-  width: 100%;
-  max-width: 280px;
+
+  /* center the whole toggle container itself */
+  width: fit-content;
   margin-left: auto;
   margin-right: auto;
+
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
