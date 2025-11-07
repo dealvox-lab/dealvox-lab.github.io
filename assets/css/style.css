@@ -191,6 +191,47 @@ body {
   padding-top: 2px;
 }
 
+/* Badges under the form */
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px 0 6px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #f9fafb;
+  background: linear-gradient(135deg, #2075ae, #4fb0ff);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  white-space: nowrap;
+}
+
+/* subtle variation per badge for a richer look */
+.hero-badges .hero-badge:nth-child(2) {
+  background: linear-gradient(135deg, #1a5c89, #2075ae);
+}
+
+.hero-badges .hero-badge:nth-child(3) {
+  background: linear-gradient(135deg, #2075ae, #335cff);
+}
+
+.hero-badge .icon {
+  font-size: 0.9rem;
+}
+
 /* ================= FEATURES ================= */
 
 .features {
