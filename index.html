@@ -2,103 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Landing Page</title>
+  <title>Dealvox AI – AI That Sounds Human</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="hero-inner">
-
-      <!-- TOP BAR -->
-      <div class="top-bar">
-        <div class="logo">
-          <!-- Replace with your actual logo file -->
-          <img src="assets/logo.png" alt="Your Logo" />
-        </div>
-
-        <div class="menu-icon" aria-label="Open navigation" role="button">
-          <span></span><span></span><span></span>
-        </div>
+  <!-- TOP WHITE BAR -->
+  <header class="topline">
+    <div class="topline-inner">
+      <!-- Logo takes ~10% of screen width -->
+      <div class="logo">
+        <img src="assets/logo.png" alt="Dealvox AI" />
       </div>
 
-      <!-- HERO TEXT + FORM -->
-      <div class="hero-content">
-        <h1 class="hero-title">HIRE AI THAT SOUNDS HUMAN</h1>
-        <p class="hero-subtitle">No burnout. No turnover. Just consistent revenue</p>
-
-        <form class="hero-form" method="POST" action="https://example.com/your-form-endpoint">
-          <label>
-            Full name
-            <input type="text" name="name" placeholder="Jane Doe" required />
-          </label>
-
-          <label>
-            Work email
-            <input type="email" name="email" placeholder="you@company.com" required />
-          </label>
-
-          <label>
-            I’m interested in
-            <select name="interest">
-              <option value="demo">Booking a demo</option>
-              <option value="pricing">Pricing options</option>
-              <option value="partnership">Partnership</option>
-            </select>
-          </label>
-
-          <button type="submit">Get started</button>
-          <div class="form-helper">We respect your privacy. No spam, ever.</div>
-        </form>
+      <!-- Dark grey hamburger menu -->
+      <div class="menu-icon" aria-label="Open navigation" role="button">
+        <span></span><span></span><span></span>
       </div>
     </div>
   </header>
 
+  <!-- HERO SECTION BELOW TOP BAR -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-title">HIRE AI THAT SOUNDS HUMAN</h1>
+        <p class="hero-subtitle">No burnout. No turnover. Just consistent revenue.</p>
+        <p class="hero-note">Get a live test call from our AI sales agent in seconds.</p>
+
+        <!-- Simple test-call form (hook to your backend/Formspree later) -->
+        <form class="hero-form" method="POST" action="https://example.com/your-form-endpoint">
+          <label>
+            Country / Language
+            <select name="locale">
+              <option value="us-en">US / English</option>
+              <option value="uk-en">UK / English</option>
+              <option value="eu-en">EU / English</option>
+            </select>
+          </label>
+
+          <label>
+            Phone number
+            <input type="tel" name="phone" placeholder="(000) 000-00-00" required />
+          </label>
+
+          <button type="submit">Call me</button>
+
+          <div class="form-helper">
+            By submitting, I consent to receive AI-automated test calls. No purchase required.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section class="features">
     <article class="feature-card">
-      <div class="feature-image">Placeholder image</div>
-      <h2 class="feature-title">Benefit One</h2>
-      <p class="feature-text">Explain a key advantage or outcome for the user.</p>
+      <div class="feature-image">24/7</div>
+      <h2 class="feature-title">Always On</h2>
+      <p class="feature-text">AI reps demo-ready 24/7 for inbound and outbound campaigns.</p>
     </article>
 
     <article class="feature-card">
-      <div class="feature-image">Placeholder image</div>
-      <h2 class="feature-title">Benefit Two</h2>
-      <p class="feature-text">Highlight how your service saves time or money.</p>
+      <div class="feature-image">💬</div>
+      <h2 class="feature-title">Human-Like Voice</h2>
+      <p class="feature-text">Natural conversations, custom scripting, and intent detection.</p>
     </article>
 
     <article class="feature-card">
-      <div class="feature-image">Placeholder image</div>
-      <h2 class="feature-title">Benefit Three</h2>
-      <p class="feature-text">Show credibility: quality, support, reliability.</p>
+      <div class="feature-image">📈</div>
+      <h2 class="feature-title">Predictable Costs</h2>
+      <p class="feature-text">No hiring, training, or turnover costs. Simple usage-based pricing.</p>
     </article>
   </section>
 
   <!-- TEXT BLOCK -->
   <section class="text-block">
-    <h2>Explain What Happens Next</h2>
+    <h2>How the Live Test Call Works</h2>
     <p>
-      Use this space to describe what visitors should expect after they sign up or click.
-      Keep it concise and friendly.
+      Share a number, choose your market, and our AI sales agent places a short,
+      scripted test call so you can hear tone, latency, objection handling, and
+      handoff flow in real time. No integrations, no commitment — just a fast way
+      to validate whether AI callers fit your pipeline.
     </p>
   </section>
 
   <!-- CTA -->
   <section class="cta">
-    <div class="cta-image">CTA image placeholder</div>
+    <div class="cta-image">
+      Live dashboard / call analytics preview (replace with real image).
+    </div>
     <div>
-      <div class="cta-copy-title">Ready to get started?</div>
-      <div class="cta-copy-text">Invite users to take the next step confidently.</div>
-      <a href="#" class="cta-button">Book a demo</a>
+      <div class="cta-copy-title">Ready to trial your first AI closer?</div>
+      <div class="cta-copy-text">
+        Book a 15-minute walkthrough and we’ll spin up a branded AI agent tailored
+        to your pitch, qualification rules, and CRM flow.
+      </div>
+      <a href="#"
+         class="cta-button">Book a live demo</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    © <span id="year"></span> Your Brand. All rights reserved.
+    © <span id="year"></span> Dealvox AI. All rights reserved.
   </footer>
 
   <script>
