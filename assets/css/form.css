@@ -52,7 +52,7 @@
   border-radius: 10px;
   border: none;
   background-color: #fff;
-  color: #e5e7eb;
+  color: #333;
   font-size: 1.3rem;
   appearance: none;
   outline: none;
@@ -91,7 +91,7 @@
 .voice-option {
   border: none;
   background: transparent;
-  color: #fff;
+  color: #333;
   padding: 6px 14px;
   font-size: 0.85rem;
   border-radius: 10px;
