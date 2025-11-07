@@ -490,12 +490,12 @@ body {
   }
 }
 
-/* ========== AI METRICS SCIENCE-PROOF SECTION ========== */
+/* ========== AI METRICS SCIENCE-PROOF SECTION (Animated) ========== */
 
 .ai-metrics {
   background: #2075ae;
   color: #ffffff;
-  padding: 56px 0 48px;
+  padding: 64px 0 54px;
 }
 
 .ai-metrics-inner {
@@ -506,20 +506,19 @@ body {
 }
 
 .ai-metrics-title {
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .ai-metrics-subtitle {
   font-size: 0.95rem;
-  max-width: 640px;
-  margin: 0 auto 26px;
+  max-width: 680px;
+  margin: 0 auto 32px;
   color: rgba(240, 249, 255, 0.9);
   line-height: 1.6;
 }
 
-/* Underline accent */
 .ai-metrics-title::after {
   content: "";
   display: block;
@@ -534,34 +533,38 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
-  margin-bottom: 18px;
+  gap: 36px;
+  margin-bottom: 22px;
 }
 
 .metric-card {
-  max-width: 260px;
+  max-width: 280px;
 }
 
-/* Circular charts */
+/* Base circular charts: start at 0, animate via --fill */
 .metric-circle {
-  --fill: 50%;
-  width: 140px;
-  height: 140px;
+  --fill: 0%;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  margin: 0 auto 12px;
+  margin: 0 auto 14px;
   background:
     conic-gradient(#ffffff var(--fill), rgba(255,255,255,0.14) var(--fill));
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition:
+    background 1.1s ease-out,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* Inner white circle with value */
+/* Inner white core */
 .metric-circle-inner {
-  width: 96px;
-  height: 96px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background-color: #ffffff;
   display: flex;
@@ -571,10 +574,11 @@ body {
   color: #2075ae;
   font-weight: 700;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
 }
 
 .metric-value {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1;
 }
 
@@ -584,32 +588,45 @@ body {
   letter-spacing: 0.14em;
 }
 
-/* Specific fills */
-.metric-32 { --fill: 32%; }
-.metric-121 { --fill: 100%; } /* capped visually, >100% = full ring */
-.metric-74 { --fill: 74%; }
+/* When animated: set their fills via CSS classes (triggered by JS) */
+.metric-32.animate  { --fill: 32%; }
+.metric-74.animate  { --fill: 74%; }
 
+/* 121%: show a bold blue arc instead of plain white */
+.metric-121 {
+  /* starts empty; --fill will be driven by .animate */
+  --fill: 0%;
+  background:
+    conic-gradient(#93c5fd var(--fill), rgba(255,255,255,0.14) var(--fill));
+}
+
+/* on animate, grow the blue segment (e.g. ~80% of the ring) */
+.metric-121.animate {
+  --fill: 80%;
+}
+
+/* Caption text */
 .metric-caption {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   line-height: 1.5;
   color: rgba(234, 244, 255, 0.92);
 }
 
 /* Footnote */
 .ai-metrics-footnote {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: rgba(219, 234, 254, 0.85);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Hover polish */
 .metric-card:hover .metric-circle {
   transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
-  transition: all 0.25s ease;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 .metric-card:hover .metric-circle-inner {
-  transform: scale(1.03);
-  transition: all 0.25s ease;
+  transform: scale(1.04);
 }
 
 /* Responsive */
@@ -618,7 +635,15 @@ body {
     padding: 0 16px;
   }
   .ai-metrics-grid {
-    gap: 20px;
+    gap: 24px;
+  }
+  .metric-circle {
+    width: 130px;
+    height: 130px;
+  }
+  .metric-circle-inner {
+    width: 90px;
+    height: 90px;
   }
 }
 
