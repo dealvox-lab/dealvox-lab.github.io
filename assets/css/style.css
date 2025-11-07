@@ -23,35 +23,47 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER + HERO */
+/* === HERO === */
 .hero {
+  position: relative;
+  height: 100vh; /* full screen */
+  display: flex;
+  flex-direction: column;
   background:
     linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
     url("../hero-bg.jpg") center/cover no-repeat;
   color: var(--white);
-  padding: 16px 20px 64px;
 }
 
+/* Center content vertically */
 .hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: var(--max-width);
   margin: 0 auto;
+  width: 100%;
 }
 
+/* Top Bar */
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
+  padding-top: 10px;
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.2);
+/* Logo Image */
+.logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+  border-radius: 4px;
 }
 
+/* Sandwich Menu */
 .menu-icon {
   width: 32px;
   height: 24px;
@@ -66,25 +78,22 @@ body {
   background-color: var(--white);
 }
 
-/* HERO CONTENT */
+/* Hero Text */
 .hero-content {
   text-align: center;
   max-width: 640px;
   margin: 0 auto;
 }
-
 .hero-title {
   font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 700;
   margin-bottom: 8px;
 }
-
 .hero-subtitle {
   font-size: 1.05rem;
   color: rgba(249,250,251,0.85);
   margin-bottom: 18px;
 }
-
 .hero-note {
   font-size: 0.95rem;
   font-style: italic;
@@ -92,7 +101,7 @@ body {
   margin-bottom: 24px;
 }
 
-/* FORM */
+/* Form */
 .hero-form {
   background-color: rgba(15,23,42,0.9);
   padding: 18px 18px 20px;
@@ -146,7 +155,7 @@ body {
   margin-top: -4px;
 }
 
-/* FEATURES */
+/* === FEATURES === */
 .features {
   max-width: var(--max-width);
   margin: 40px auto 32px;
@@ -183,7 +192,7 @@ body {
   color: var(--text-muted);
 }
 
-/* TEXT BLOCK */
+/* === TEXT BLOCK === */
 .text-block {
   max-width: var(--max-width);
   margin: 20px auto 40px;
@@ -201,7 +210,7 @@ body {
   color: var(--text-main);
 }
 
-/* CTA */
+/* === CTA === */
 .cta {
   max-width: var(--max-width);
   margin: 0 auto 40px;
@@ -251,7 +260,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* FOOTER */
+/* === FOOTER === */
 footer {
   text-align: center;
   padding: 18px 16px 28px;
@@ -259,9 +268,10 @@ footer {
   color: var(--text-muted);
 }
 
-/* RESPONSIVE */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .hero {
+    height: auto; /* let it adjust on small screens */
     padding: 14px 14px 40px;
   }
   .hero-form {
