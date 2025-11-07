@@ -128,7 +128,7 @@
   border-radius: 10px;
   border: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   text-align: center;
   background-color: #4b5563; /* disabled state */
   color: #9ca3af;
@@ -138,19 +138,14 @@
 }
 
 .call-button.enabled {
-  background-color: #2563ff;
+  background-color: #2075ae;
   color: #ffffff;
   cursor: pointer;
 }
 
 .call-button.enabled:hover {
-  background-color: #1d4ed8;
+  background-color: #1676b1;
   transform: translateY(-1px);
-}
-
-.hero-form-note {
-  font-size: 0.7rem;
-  color: #9ca3af;
 }
 
 /* Status message */
