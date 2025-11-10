@@ -27,55 +27,49 @@
 
     <!-- Right column: hero form (reuses existing form.css styles) -->
     <div class="cta-form">
-      <div class="hero-form-card">
-        <h3 class="hero-form-title">
-          {{ include.form_title | default: "Get an Instant Live AI Test Call" }}
-        </h3>
-        <p class="hero-form-subtitle">
-          {{ include.form_subtitle | default: "" }}
-        </p>
+  <form class="hero-form-card" data-form-origin="{{ include.id | default: 'cta' }}">
+    <h3 class="hero-form-title">
+      {{ include.form_title | default: "Get an Instant Live AI Test Call" }}
+    </h3>
+    <p class="hero-form-subtitle">
+      {{ include.form_subtitle | default: "" }}
+    </p>
 
-        <div class="voice-label">Voice</div>
-        <div class="voice-toggle">
-          <button type="button" class="voice-option active">👨 Male Voice</button>
-          <button type="button" class="voice-option">👩 Female Voice</button>
-        </div>
+    <div class="voice-label">Voice</div>
+    <div class="voice-toggle">
+      <button type="button" class="voice-option active" data-voice="male">👨 Male Voice</button>
+      <button type="button" class="voice-option" data-voice="female">👩 Female Voice</button>
+    </div>
 
-        <div class="phone-row">
-          <div class="country-select">
-            <select>
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              <option value="+61">🇦🇺 +61</option>
-              <option value="+49">🇩🇪 +49</option>
-            </select>
-          </div>
-          <div class="phone-input-wrap">
-            <input
-              type="tel"
-              placeholder="(555) 555-5555"
-              name="phone"
-              required
-            />
-          </div>
-        </div>
-
-        <label class="consent-label">
-          <input type="checkbox" required />
-          <span>
-            By submitting, I consent to receive AI-automated test calls and confirm
-            I’m the owner/authorized user of this number.
-          </span>
-        </label>
-
-        <button type="submit" class="call-button">
-          Call me now, AI
-        </button>
-        
+    <div class="phone-row">
+      <div class="country-select">
+        <select name="country_code">
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+44">🇬🇧 +44</option>
+          <option value="+61">🇦🇺 +61</option>
+          <option value="+49">🇩🇪 +49</option>
+        </select>
+      </div>
+      <div class="phone-input-wrap">
+        <input
+          type="tel"
+          placeholder="(555) 555-5555"
+          name="phone"
+          required
+        />
       </div>
     </div>
-  </div>
-</section>
-{% if include.load_form_js != false %}
-  <script src="{{ 'assets/js/form.js' | relative_url }}"></script>
-{% endif %}
+
+    <label class="consent-label">
+      <input type="checkbox" name="consent" required />
+      <span>
+        By submitting, I consent to receive AI-automated test calls and confirm
+        I’m the owner/authorized user of this number.
+      </span>
+    </label>
+
+    <button type="submit" class="call-button">
+      Call me now, AI
+    </button>
+  </form>
+</div>
