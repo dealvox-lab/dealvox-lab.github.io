@@ -807,6 +807,54 @@ body {
   }
 }
 
+/* === CTA SUBSECTION INSIDE AGENT TYPES === */
+
+.agent-cta {
+  margin-top: 50px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(32,117,174,0.08), rgba(32,117,174,0.02));
+  border: 1px solid rgba(32,117,174,0.15);
+  border-radius: 20px;
+  padding: 40px 20px 44px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.agent-cta-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.agent-cta-text {
+  color: #374151;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Button */
+.agent-cta-button {
+  display: inline-block;
+  padding: 12px 26px;
+  background-color: #2075ae;
+  color: #ffffff;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(32,117,174,0.25);
+}
+
+.agent-cta-button:hover {
+  background-color: #185e8b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(32,117,174,0.35);
+}
 
 /* ========== MAGAZINE-STYLE REVIEWS SECTION ========== */
 
