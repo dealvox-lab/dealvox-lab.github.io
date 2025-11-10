@@ -734,7 +734,7 @@ body {
 /* Image area */
 .agent-image {
   width: 100%;
-  aspect-ratio: 2 / 3; /* 👈 keeps image height automatically */
+  aspect-ratio: 3 / 2; /* 👈 keeps image height automatically */
   border-radius: 14px;
   overflow: hidden;
   background: linear-gradient(135deg, #e5f2fb, #cbdff3);
