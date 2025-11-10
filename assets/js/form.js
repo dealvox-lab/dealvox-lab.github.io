@@ -1,89 +1,68 @@
 // assets/js/form.js
 
-// 1) Set your webhook endpoint here
-const WEBHOOK_URL = "https://example.com/your-webhook-endpoint";
-
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("ai-test-call-form");
-  const voiceButtons = document.querySelectorAll(".voice-option");
-  const voiceInput = document.getElementById("voiceInput");
-  const consentCheckbox = document.getElementById("consentCheckbox");
-  const callButton = document.getElementById("callButton");
-  const statusEl = document.getElementById("formStatus");
-  const countryCodeEl = document.getElementById("countryCode");
-  const phoneEl = document.getElementById("phone");
-
-  // Voice toggle
-  voiceButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      voiceButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      voiceInput.value = btn.dataset.voice || "male";
+  // 1) Voice toggle behaviour
+  document.querySelectorAll(".voice-toggle").forEach(toggle => {
+    const buttons = toggle.querySelectorAll(".voice-option");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
     });
   });
 
-  // Enable/disable button based on consent
-  function updateButtonState() {
-    if (consentCheckbox.checked) {
-      callButton.disabled = false;
-      callButton.classList.add("enabled");
-    } else {
-      callButton.disabled = true;
-      callButton.classList.remove("enabled");
-    }
-  }
-  consentCheckbox.addEventListener("change", updateButtonState);
-  updateButtonState();
+  // 2) Form submission handling for all hero-style forms
+  const forms = document.querySelectorAll(".hero-form-card");
 
-  // Submit handler
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    statusEl.textContent = "";
-    callButton.disabled = true;
+  forms.forEach(formEl => {
+    // Ensure it's actually a <form>; if not, skip
+    if (formEl.tagName.toLowerCase() !== "form") return;
 
-    const payload = {
-      countryCode: countryCodeEl.value,
-      phone: phoneEl.value.trim(),
-      voice: voiceInput.value,
-      consent: consentCheckbox.checked,
-      source: "dealvox-ai-test-call-form"
-    };
+    formEl.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    if (!payload.phone) {
-      statusEl.textContent = "Please enter a valid phone number.";
-      updateButtonState();
-      return;
-    }
-    if (!payload.consent) {
-      statusEl.textContent = "Please confirm consent to receive a test call.";
-      updateButtonState();
-      return;
-    }
+      const activeVoiceBtn = formEl.querySelector(".voice-option.active");
+      const voice = activeVoiceBtn ? activeVoiceBtn.dataset.voice || "male" : "male";
 
-    try {
-      const res = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const code = formEl.querySelector("select[name='country_code']")?.value || "";
+      const phone = formEl.querySelector("input[name='phone']")?.value || "";
+      const consent = formEl.querySelector("input[name='consent']")?.checked || false;
 
-      if (!res.ok) {
-        throw new Error(`Request failed with status ${res.status}`);
+      if (!phone || !consent) {
+        alert("Please enter your phone number and accept the consent.");
+        return;
       }
 
-      statusEl.textContent = "✅ Request received. Your AI test call will start shortly.";
-      statusEl.style.color = "#22c55e";
-      form.reset();
-      voiceButtons.forEach((b) => b.classList.remove("active"));
-      voiceButtons[0].classList.add("active");
-      voiceInput.value = "male";
-      updateButtonState();
-    } catch (err) {
-      console.error(err);
-      statusEl.textContent = "⚠️ Something went wrong. Please try again in a moment.";
-      statusEl.style.color = "#f97316";
-      updateButtonState();
-    }
+      // TODO: replace with your real webhook URL
+      const webhookUrl = "https://example.com/your-webhook-endpoint";
+
+      const payload = {
+        phone: `${code} ${phone}`.trim(),
+        voice,
+        consent,
+        source: formEl.dataset.formOrigin || "hero"
+      };
+
+      try {
+        // Comment this out until you have a real endpoint to avoid errors:
+        // await fetch(webhookUrl, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(payload)
+        // });
+
+        console.log("Form submitted (demo payload):", payload);
+        alert("Thank you! An AI test call will be triggered shortly.");
+        formEl.reset();
+        // reset active voice to default
+        const firstVoice = formEl.querySelector(".voice-option");
+        formEl.querySelectorAll(".voice-option").forEach(b => b.classList.remove("active"));
+        if (firstVoice) firstVoice.classList.add("active");
+      } catch (err) {
+        console.error("Form submission failed:", err);
+        alert("Oops. Something went wrong. Please try again in a moment.");
+      }
+    });
   });
 });
-
