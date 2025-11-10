@@ -91,3 +91,6 @@
     </div>
   </div>
 </section>
+{% if include.load_form_js != false %}
+  <script src="{{ 'assets/js/form.js' | relative_url }}"></script>
+{% endif %}
