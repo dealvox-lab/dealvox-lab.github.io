@@ -1473,13 +1473,7 @@ footer {
 .cta-form .hero-form-title,
 .cta-form .hero-form-subtitle,
 .cta-form .hero-form-note {
-  color: #e5e7eb;
-}
-
-.cta-form .hero-form-title,
-.cta-form .hero-form-subtitle,
-.cta-form .hero-form-note {
-  color: #e5e7eb;
+  color: #333;
 }
 
 /* Responsive: stack on mobile */
