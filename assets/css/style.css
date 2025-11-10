@@ -1418,7 +1418,7 @@ footer {
   margin: 0 auto;
   padding: 70px 24px 70px;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(340px, 0.9fr);
+  grid-template-columns: 1fr 1fr;  /* ⬅️ equal columns */
   gap: 34px;
   align-items: center;
 }
@@ -1455,6 +1455,7 @@ footer {
 }
 
 /* right column form */
+/* right column form */
 .cta-form {
   display: flex;
   justify-content: flex-end;
@@ -1462,11 +1463,18 @@ footer {
 
 .cta-form .hero-form-card {
   margin: 0;
-  width: 50%;               /* ✅ make the card half of the container */
+  width: 100%;                      /* ⬅️ fill the right column */
+  max-width: 520px;                 /* optional: keeps it classy on huge screens */
   background: rgba(5, 8, 22, 0.78);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+.cta-form .hero-form-title,
+.cta-form .hero-form-subtitle,
+.cta-form .hero-form-note {
+  color: #e5e7eb;
 }
 
 .cta-form .hero-form-title,
