@@ -17,55 +17,51 @@
   padding: 0;
 }
 
+/* ==================== GLOBAL FIXED HEADER ==================== */
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--text-main);
   background-color: #f9fafb;
+  color: #111827;
   line-height: 1.6;
+  padding-top: 80px; /* push content below fixed header */
 }
 
-/* ================= TOP WHITE BAR ================= */
-
-/* ~80–85px tall white topline */
 .topline {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);      /* adds a soft glassy blur */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06);
-  height: 80px;
-  display: flex;
-  align-items: center;
   position: fixed;
   top: 0;
-  width: 100%;
-  z-index: 9;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .topline-inner {
   max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Logo container ~10% of viewport width */
-.logo {
-  flex: 0 0 10vw;
-  max-width: 10vw;
-}
-
+/* Logo */
 .logo img {
-  width: 100%;
-  height: auto;
-  max-height: 48px;
+  height: 48px;
+  width: auto;
   object-fit: contain;
   display: block;
 }
 
-/* Dark grey (#333) hamburger */
+/* Burger icon (shown on all breakpoints) */
 .menu-icon {
   width: 32px;
   height: 24px;
@@ -73,11 +69,82 @@ body {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1101;
 }
+
 .menu-icon span {
   height: 3px;
+  width: 100%;
   border-radius: 999px;
-  background-color: #333333;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+/* X animation when open */
+.topline.nav-open .menu-icon span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.topline.nav-open .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+.topline.nav-open .menu-icon span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Overlay menu */
+.nav-overlay {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1100;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Show overlay when open */
+.topline.nav-open .nav-overlay {
+  display: flex;
+  opacity: 1;
+}
+
+/* Menu links */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: #111827;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: #2075ae;
+}
+
+/* Lock scroll when menu open */
+body.nav-open {
+  overflow: hidden;
 }
 
 /* ================= HERO ================= */
