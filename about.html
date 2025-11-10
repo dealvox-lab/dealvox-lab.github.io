@@ -16,13 +16,17 @@
 
   <main class="about-page">
 
-    <!-- HERO IMAGE -->
-    <section class="about-hero-image">
-      <div class="about-hero-img">
-        <!-- Replace with your own image -->
-        <img src="{{ 'assets/images/about-hero.webp' | relative_url }}" alt="Dealvox AI Team" />
-      </div>
-    </section>
+    <!-- HERO IMAGE WITH OVERLAYED TITLE -->
+<section class="about-hero-image">
+  <div class="about-hero-img">
+    <img src="{{ 'assets/images/about-hero.jpg' | relative_url }}" alt="Dealvox AI Team" />
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-text">
+      <h1>About Us</h1>
+      <p>Building practical AI that actually sells — not just impresses in demos.</p>
+    </div>
+  </div>
+</section>
 
     <!-- ABOUT TEXT -->
     <section class="about-body">
