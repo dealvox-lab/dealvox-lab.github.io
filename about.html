@@ -1,0 +1,113 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us — Dealvox AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ 'assets/css/form.css' | relative_url }}" />
+</head>
+<body>
+
+  {% include header.html %}
+
+  <main class="about-page">
+
+    <!-- HERO IMAGE -->
+    <section class="about-hero-image">
+      <div class="about-hero-img">
+        <!-- Replace with your own image -->
+        <img src="{{ 'assets/images/about-hero.jpg' | relative_url }}" alt="Dealvox AI Team" />
+      </div>
+    </section>
+
+    <!-- ABOUT TEXT -->
+    <section class="about-body">
+      <div class="about-inner">
+        <h1 class="about-title">About Us</h1>
+        <p class="about-sub">
+          Building practical AI that actually sells — not just impresses in demos.
+        </p>
+
+        <p>
+          Two years ago, a small but ambitious team set out to prove that world-class AI technology
+          doesn’t have to come from billion-dollar labs — it can come from people who understand what
+          real businesses need.
+        </p>
+        <p>
+          Built by an experienced AI engineer and a sales professional from top-tier companies, our journey
+          began with a simple goal: to bridge the gap between cutting-edge AI and the daily operations of
+          modern sales teams. We saw how much potential was being lost in manual outreach, cold calls, and
+          disconnected CRM systems — and decided to change that.
+        </p>
+        <p>
+          Today, our company stands as a growing mid-size business that blends advanced technology with
+          human-centric thinking. Over the past two years, we’ve built and refined AI systems that don’t
+          just automate — they understand, learn, and sell. Our flagship platform, Dealvox AI, was born
+          from that vision: an AI-powered sales voice assistant that runs on top leading large language
+          models and connects seamlessly with the world’s most powerful AI service backends.
+        </p>
+        <p>
+          Dealvox AI represents the culmination of everything we believe in — practical intelligence,
+          scalable innovation, and the relentless pursuit of simpler, smarter workflows. What started as
+          a small experiment in AI-driven sales transformation has grown into a trusted solution helping
+          businesses close more deals, faster, and with less friction.
+        </p>
+        <p>
+          We’re not here to impress with buzzwords. We’re here to make AI work for people — efficiently,
+          intelligently, and at scale.
+        </p>
+      </div>
+    </section>
+
+    <!-- BRAND LOGOS SECTION -->
+    <section class="brand-line">
+      <div class="brand-inner">
+        <p class="brand-title">Powered by and integrated with:</p>
+        <div class="brand-logos">
+          <a href="https://cloud.google.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/google-cloud.svg' | relative_url }}" alt="Google Cloud" />
+          </a>
+          <a href="https://aws.amazon.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/aws.svg' | relative_url }}" alt="AWS" />
+          </a>
+          <a href="https://azure.microsoft.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/azure.svg' | relative_url }}" alt="Azure" />
+          </a>
+          <a href="https://retellai.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/retellai.svg' | relative_url }}" alt="Retell AI" />
+          </a>
+          <a href="https://n8n.io" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/n8n.svg' | relative_url }}" alt="n8n" />
+          </a>
+          <a href="https://www.make.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/make.svg' | relative_url }}" alt="Make.com" />
+          </a>
+          <a href="https://openai.com" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/openai.svg' | relative_url }}" alt="OpenAI" />
+          </a>
+          <a href="https://claude.ai" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/claude.svg' | relative_url }}" alt="Claude" />
+          </a>
+          <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener">
+            <img src="{{ 'assets/logos/vertexai.svg' | relative_url }}" alt="Vertex AI" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year-about"></span> Dealvox AI. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year-about').textContent = new Date().getFullYear();
+  </script>
+  <script src="{{ 'assets/js/nav.js' | relative_url }}"></script>
+</body>
+</html>
