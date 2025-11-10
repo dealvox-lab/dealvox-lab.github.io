@@ -10,18 +10,7 @@
 </head>
 <body>
 
-  <!-- TOP WHITE BAR (slightly transparent) -->
-  <header class="topline">
-    <div class="topline-inner">
-      <div class="logo">
-        <img src="assets/logo.png" alt="Dealvox AI" />
-      </div>
-
-      <div class="menu-icon" aria-label="Open navigation" role="button">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
+  {% include header.html %}
 
   <!-- HERO SECTION WITH BACKGROUND IMAGE & OVERLAY -->
   <section class="hero">
@@ -609,8 +598,9 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="assets/js/form.js"></script>
-  <script src="assets/js/metrics.js"></script>
-  <script src="assets/js/reviews.js"></script>
+  <script src="{{ 'assets/js/form.js' | relative_url }}"></script>
+  <script src="{{ 'assets/js/metrics.js' | relative_url }}"></script>
+  <script src="{{ 'assets/js/reviews.js' | relative_url }}"></script>
+  <script src="{{ 'assets/js/nav.js' | relative_url }}"></script>
 </body>
 </html>
