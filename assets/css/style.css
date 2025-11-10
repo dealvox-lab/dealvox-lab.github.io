@@ -647,6 +647,167 @@ body {
   }
 }
 
+/* ========== VOICE AGENT TYPES ========== */
+
+.agent-types {
+  background: #f7fafc;
+  padding: 60px 0 56px;
+}
+
+.agent-types-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.agent-types-head {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 30px;
+}
+
+.agent-types-title {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.agent-types-subtitle {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.agent-types-underline {
+  width: 70px;
+  height: 3px;
+  background-color: #2075ae;
+  border-radius: 999px;
+  margin: 14px auto 0;
+}
+
+/* Grid layout */
+.agent-types-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Card styling */
+.agent-card {
+  background: rgba(255,255,255,0.98);
+  border-radius: 20px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+  border: 1px solid rgba(148,163,253,0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft gradient overlay for magazine feel */
+.agent-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(32,117,174,0.06), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.agent-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(32,117,174,0.16);
+  border-color: rgba(32,117,174,0.35);
+}
+
+.agent-card:hover::before {
+  opacity: 1;
+}
+
+/* Image area */
+.agent-image {
+  width: 100%;
+  height: 88px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e5f2fb, #cbdff3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.agent-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text structure */
+.agent-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+}
+
+.agent-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.agent-core {
+  font-size: 0.8rem;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+/* Bullet list */
+.agent-points {
+  list-style: none;
+  font-size: 0.72rem;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.agent-points strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+  .agent-types-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .agent-types-inner {
+    padding: 0 16px;
+  }
+  .agent-types-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .agent-types-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* ========== MAGAZINE-STYLE REVIEWS SECTION ========== */
 
 .reviews-section {
