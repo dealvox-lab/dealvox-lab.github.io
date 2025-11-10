@@ -1,0 +1,93 @@
+<section
+  class="cta-full-hero"
+  id="{{ include.id | default: 'contact' }}"
+  style="background-image: url('{{ (include.bg | default: 'assets/images/cta-bg.jpg') | relative_url }}');"
+>
+  <div class="cta-inner">
+    <!-- Left column: message -->
+    <div class="cta-copy">
+      <h2>
+        {{ include.title | default: "See Dealvox AI in Action" }}
+      </h2>
+      <p>
+        {{ include.subtitle | default: "Book a live test call from an AI Voice Agent tuned to your sales motion. No long setup cycles, no engineering backlog — just a real conversation you can judge on the spot." }}
+      </p>
+      <ul>
+        <li>
+          {{ include.bullet1 | default: "Instant AI call to your number in under 60 seconds." }}
+        </li>
+        <li>
+          {{ include.bullet2 | default: "Scripts aligned with your brand, industry, and compliance needs." }}
+        </li>
+        <li>
+          {{ include.bullet3 | default: "Human-level rapport, AI-level consistency — available 24/7." }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right column: hero form (reuses existing form.css styles) -->
+    <div class="cta-form">
+      <div class="hero-form-card">
+        <h3 class="hero-form-title">
+          {{ include.form_title | default: "Get an Instant Live AI Test Call" }}
+        </h3>
+        <p class="hero-form-subtitle">
+          {{ include.form_subtitle | default: "Drop your number, pick a voice, and experience Dealvox AI for yourself." }}
+        </p>
+
+        <div class="voice-label">Voice</div>
+        <div class="voice-toggle">
+          <button type="button" class="voice-option active">👨 Male Voice</button>
+          <button type="button" class="voice-option">👩 Female Voice</button>
+        </div>
+
+        <div class="phone-row">
+          <div class="country-select">
+            <select>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+49">🇩🇪 +49</option>
+            </select>
+          </div>
+          <div class="phone-input-wrap">
+            <input
+              type="tel"
+              placeholder="(555) 555-5555"
+              name="phone"
+              required
+            />
+          </div>
+        </div>
+
+        <label class="consent-label">
+          <input type="checkbox" required />
+          <span>
+            By submitting, I consent to receive AI-automated test calls and confirm
+            I’m the owner/authorized user of this number.
+          </span>
+        </label>
+
+        <button type="submit" class="call-button">
+          Call me now, AI
+        </button>
+
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <span class="icon">⚡</span> Live in under 60s
+          </div>
+          <div class="hero-badge">
+            <span class="icon">🛡️</span> Safe & revocable
+          </div>
+          <div class="hero-badge">
+            <span class="icon">🚀</span> Sales-ready out of the box
+          </div>
+        </div>
+
+        <p class="hero-form-note">
+          No spam. No long-term commitment. Just a real test call from Dealvox AI.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
