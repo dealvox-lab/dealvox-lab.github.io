@@ -1462,6 +1462,7 @@ footer {
 
 .cta-form .hero-form-card {
   margin: 0;
+  width: 50%;               /* ✅ make the card half of the container */
   background: rgba(5, 8, 22, 0.78);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.22);
