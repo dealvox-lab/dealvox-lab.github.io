@@ -55,16 +55,20 @@
       </div>
     </div>
 
-    <label class="consent-label">
-      <input type="checkbox" name="consent" required />
-      <span>
-        By submitting, I consent to receive AI-automated test calls and confirm
-        I’m the owner/authorized user of this number.
-      </span>
-    </label>
+        <!-- SUBMIT BUTTON (DISABLED UNTIL CONSENT) -->
+            <button type="submit" id="callButton" class="call-button" disabled>
+              CALL ME NOW, AI
+            </button>
 
-    <button type="submit" class="call-button">
-      Call me now, AI
-    </button>
+             <!-- CONSENT CHECKBOX -->
+            <label class="consent-label">
+              <input type="checkbox" id="consentCheckbox" />
+              <span>
+                By submitting, I consent to receive AI-automated calls and confirm I'm the owner/authorized user of this number.
+              </span>
+            </label>
+
+            <!-- Status message placeholder -->
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
   </form>
 </div>
