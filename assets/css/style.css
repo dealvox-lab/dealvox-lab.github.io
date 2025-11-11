@@ -1685,7 +1685,7 @@ input:checked + .slider:before {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 /* Base card */
@@ -1699,6 +1699,8 @@ input:checked + .slider:before {
   border: 1px solid rgba(32, 117, 174, 0.1);
   transition: 0.3s ease;
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-card h3 {
@@ -1811,7 +1813,14 @@ input:checked + .slider:before {
   line-height: 1.4;
 }
 
-/* Price display (1.5x larger, inline) */
+/* Price + CTA (aligned bottoms) */
+
+.price-cta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
 .price-tag {
   display: inline-flex;
@@ -1820,12 +1829,18 @@ input:checked + .slider:before {
   font-size: 2.25rem;
   font-weight: 700;
   color: #111827;
-  margin: 4px 0 10px;
+  margin: 4px 0 0;
 }
 
 .price-tag span {
   font-size: 0.95rem;
   color: #6b7280;
+}
+
+.effective-rate {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2075ae;
 }
 
 /* CTA buttons (1.5x larger) */
@@ -1858,37 +1873,82 @@ input:checked + .slider:before {
   background: #15597f;
 }
 
-/* Pay-as-you-go block */
+/* Pay-as-you-go full-width card */
 
-.payg-block {
+.payg-card {
+  margin-top: 10px;
+  padding: 20px 20px 18px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(32,117,174,0.16);
+  box-shadow: 0 6px 20px rgba(15,23,42,0.09);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.payg-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 18px 24px;
-  border: 1px solid rgba(32,117,174,0.1);
-  box-shadow: 0 6px 18px rgba(15,23,42,0.08);
-  gap: 16px;
+  align-items: baseline;
+  gap: 12px;
 }
 
-.payg-content h3 {
-  margin: 0;
+.payg-card h3 {
   font-size: 1rem;
+  font-weight: 700;
   color: #111827;
+  margin: 0;
 }
 
-.payg-content p {
-  margin: 2px 0 0;
+.payg-price {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.payg-price-main {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2075ae;
+}
+
+.payg-price span:last-child {
+  font-size: 0.9rem;
   color: #6b7280;
-  font-size: 0.85rem;
+}
+
+.payg-features {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 4px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 4px 16px;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+.payg-features li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.payg-features li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #2075ae;
 }
 
 /* Animations for value changes */
 
 .price-tag,
-.minutes-display {
+.minutes-display,
+.effective-rate {
   transition: color 0.2s ease;
 }
 
@@ -1913,13 +1973,7 @@ input:checked + .slider:before {
     transform: translateY(0);
   }
 
-  .payg-block {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
-
-  .pricing-btn {
-    width: 100%;
+  .payg-card {
+    text-align: left;
   }
 }
