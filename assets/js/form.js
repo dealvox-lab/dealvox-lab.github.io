@@ -5,7 +5,10 @@ const WEBHOOK_URL = "https://hook.us1.make.com/s3iatdvrdtqgalae2z51hrpa6fthwa41"
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("ai-test-call-form");
-  const voiceButtons = document.querySelectorAll(".voice-option");
+  if (!form) return; // Script can load globally without breaking
+
+  // Elements (scoped where possible)
+  const voiceButtons = form.querySelectorAll(".voice-option");
   const voiceInput = document.getElementById("voiceInput");
   const consentCheckbox = document.getElementById("consentCheckbox");
   const callButton = document.getElementById("callButton");
@@ -13,40 +16,64 @@ document.addEventListener("DOMContentLoaded", () => {
   const countryCodeEl = document.getElementById("countryCode");
   const phoneEl = document.getElementById("phone");
 
-  // Voice toggle
-  voiceButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      voiceButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      voiceInput.value = btn.dataset.voice || "male";
-    });
-  });
-
-  // Enable/disable button based on consent
+  // Helper: update button state based on required fields
   function updateButtonState() {
-    if (consentCheckbox.checked) {
-      callButton.disabled = false;
-      callButton.classList.add("enabled");
-    } else {
-      callButton.disabled = true;
-      callButton.classList.remove("enabled");
+    if (!callButton) return;
+
+    const hasPhone = phoneEl && phoneEl.value.trim() !== "";
+    const hasConsent = consentCheckbox ? consentCheckbox.checked : true;
+    const hasVoice = voiceInput ? !!voiceInput.value : true;
+
+    const enabled = hasPhone && hasConsent && hasVoice;
+
+    callButton.disabled = !enabled;
+    callButton.classList.toggle("enabled", enabled);
+  }
+
+  // Voice toggle (guard voiceInput presence)
+  if (voiceButtons.length && voiceInput) {
+    voiceButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        voiceButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        voiceInput.value = btn.dataset.voice || "male";
+        updateButtonState();
+      });
+    });
+
+    // Set default voice if not set
+    if (!voiceInput.value && voiceButtons[0]) {
+      voiceButtons[0].classList.add("active");
+      voiceInput.value = voiceButtons[0].dataset.voice || "male";
     }
   }
-  consentCheckbox.addEventListener("change", updateButtonState);
+
+  // Consent + phone listeners (guard against missing elements)
+  if (consentCheckbox) {
+    consentCheckbox.addEventListener("change", updateButtonState);
+  }
+  if (phoneEl) {
+    phoneEl.addEventListener("input", updateButtonState);
+  }
+
+  // Initial state
   updateButtonState();
 
-  // Submit handler
+  // Submit handler (only if key elements exist)
+  if (!statusEl || !callButton || !phoneEl) return;
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     statusEl.textContent = "";
+    statusEl.style.color = "";
     callButton.disabled = true;
 
     const payload = {
-      countryCode: countryCodeEl.value,
+      countryCode: countryCodeEl ? countryCodeEl.value : "",
       phone: phoneEl.value.trim(),
-      voice: voiceInput.value,
-      consent: consentCheckbox.checked,
-      source: "dealvox-ai-test-call-form"
+      voice: voiceInput ? voiceInput.value : null,
+      consent: consentCheckbox ? consentCheckbox.checked : false,
+      source: "dealvox-ai-test-call-form",
     };
 
     if (!payload.phone) {
@@ -54,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateButtonState();
       return;
     }
-    if (!payload.consent) {
+    if (consentCheckbox && !payload.consent) {
       statusEl.textContent = "Please confirm consent to receive a test call.";
       updateButtonState();
       return;
@@ -73,10 +100,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       statusEl.textContent = "✅ Request received. Your AI test call will start shortly.";
       statusEl.style.color = "#22c55e";
+
       form.reset();
-      voiceButtons.forEach((b) => b.classList.remove("active"));
-      voiceButtons[0].classList.add("active");
-      voiceInput.value = "male";
+
+      // Reset voice selection if present
+      if (voiceButtons.length && voiceInput) {
+        voiceButtons.forEach((b) => b.classList.remove("active"));
+        voiceButtons[0].classList.add("active");
+        voiceInput.value = voiceButtons[0].dataset.voice || "male";
+      }
+
       updateButtonState();
     } catch (err) {
       console.error(err);
