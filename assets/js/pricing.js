@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!billingToggle || sliders.length === 0) return;
 
-  // Pricing table from your sheet
+  // Pricing data from sheet
   const pricingData = {
     starter: {
       monthly: { 200: 239, 300: 339, 400: 439 },
@@ -30,15 +30,37 @@ document.addEventListener("DOMContentLoaded", () => {
         5000: 36990
       }
     }
-    // Enterprise & Pay-as-you-go are static in markup
+    // enterprise & payg: static markup
   };
 
   function animateChange(el) {
     if (!el) return;
     el.classList.remove("bump");
-    // trigger reflow so animation restarts
-    void el.offsetWidth;
+    void el.offsetWidth; // reflow
     el.classList.add("bump");
+  }
+
+  function snapToTiers(slider) {
+    const tiersAttr = slider.dataset.tiers;
+    if (!tiersAttr) return parseInt(slider.value, 10);
+
+    const tiers = tiersAttr.split(",").map(v => parseInt(v.trim(), 10)).filter(Boolean);
+    if (!tiers.length) return parseInt(slider.value, 10);
+
+    const current = parseInt(slider.value, 10);
+    let closest = tiers[0];
+    let minDiff = Math.abs(current - closest);
+
+    tiers.forEach(v => {
+      const diff = Math.abs(current - v);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = v;
+      }
+    });
+
+    slider.value = closest;
+    return closest;
   }
 
   function updatePrices() {
@@ -49,10 +71,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!card) return;
 
       const plan = card.dataset.plan;
-      const minutes = parseInt(slider.value, 10);
       const priceTag = card.querySelector(".price-tag");
       const display = card.querySelector(".minutes-display");
+      const rateEl = card.querySelector(".effective-rate");
       const marks = card.querySelectorAll(".minutes-marks span");
+
+      let minutes = parseInt(slider.value, 10);
+      // Snap growth (and any future tiered sliders) to defined tiers
+      minutes = snapToTiers(slider);
 
       const planData = pricingData[plan];
       if (!planData) return;
@@ -64,6 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const per = yearly ? "/yr" : "/mo";
         priceTag.innerHTML = `$${basePrice.toLocaleString()}<span>${per}</span>`;
         animateChange(priceTag);
+
+        // Effective price per minute (monthly or yearly/12)
+        if (rateEl) {
+          const periodPrice = yearly ? basePrice / 12 : basePrice;
+          const perMin = periodPrice / minutes;
+          rateEl.textContent = `≈ $${perMin.toFixed(2)} / min`;
+          animateChange(rateEl);
+        }
       }
 
       if (display) {
@@ -72,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Highlight active minute mark
-      if (marks.length) {
+      if (marks && marks.length) {
         marks.forEach(mark => {
           const val = parseInt(mark.dataset.value, 10);
           mark.classList.toggle("active", val === minutes);
@@ -82,9 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   billingToggle.addEventListener("change", updatePrices);
+
   sliders.forEach(slider => {
-    slider.addEventListener("input", updatePrices);
+    slider.addEventListener("input", () => {
+      updatePrices();
+    });
   });
 
+  // Initial render
   updatePrices();
 });
