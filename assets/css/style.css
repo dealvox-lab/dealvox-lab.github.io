@@ -1623,6 +1623,13 @@ footer {
   margin: 8px 0 24px;
 }
 
+.save-label {
+  font-size: 0.8rem;
+  color: #2075ae;
+  font-weight: 600;
+  margin-top: -6px;
+}
+
 /* Billing toggle */
 .billing-toggle {
   display: flex;
