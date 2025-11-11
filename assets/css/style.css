@@ -1598,3 +1598,205 @@ footer {
     max-width: 460px;
   }
 }
+
+/* ========== PRICING SECTION (MAGAZINE STYLE) ========== */
+.pricing {
+  padding: 80px 0;
+  background: #f9fafb;
+}
+
+.pricing-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.pricing-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.pricing-sub {
+  color: #6b7280;
+  margin: 8px 0 24px;
+}
+
+/* Billing toggle */
+.billing-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 32px;
+  color: #374151;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.4s;
+  border-radius: 22px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2075ae;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Grid layout */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 32px;
+}
+
+.pricing-card {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(32, 117, 174, 0.1);
+  transition: 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(32, 117, 174, 0.2);
+}
+
+.featured {
+  border: 2px solid #2075ae;
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2075ae;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.minutes-slider {
+  width: 100%;
+  margin: 8px 0;
+  accent-color: #2075ae;
+}
+
+.minutes-display {
+  font-size: 0.85rem;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 10px 0;
+}
+
+.price-tag span {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+.pricing-btn {
+  background: #374151;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pricing-btn:hover {
+  background: #111827;
+}
+
+.pricing-btn.accent {
+  background: #2075ae;
+}
+
+.pricing-btn.accent:hover {
+  background: #15597f;
+}
+
+/* PAYG section */
+.payg-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 18px 24px;
+  border: 1px solid rgba(32,117,174,0.1);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+}
+
+.payg-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.payg-content p {
+  margin: 2px 0 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .payg-block {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
