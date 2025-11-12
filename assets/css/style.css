@@ -1873,103 +1873,112 @@ input:checked + .slider:before {
   background: #15597f;
 }
 
-/* Pay-as-you-go full-width card */
-
-/* ----- PAYG redesigned as 2-column card ----- */
+/* ----- PAYG redesigned (unified with other pricing cards) ----- */
 .payg-card {
-  margin-top: 10px;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 28px 32px;
   border-radius: 20px;
   background: #ffffff;
   border: 1px solid rgba(32,117,174,0.16);
-  box-shadow: 0 6px 20px rgba(15,23,42,0.09);
-  display: grid;
-  grid-template-columns: 1.4fr 0.8fr;  /* features | price */
-  gap: 24px;
-  align-items: start;
+  box-shadow: 0 6px 20px rgba(15,23,42,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  text-align: left;
 }
 
-/* left side */
+/* Left column */
 .payg-left h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #111827;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
-.payg-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 6px 18px;
-  font-size: 0.85rem;
-  color: #4b5563;
-}
-.payg-features li {
-  position: relative;
-  padding-left: 16px;
-}
-.payg-features li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #2075ae;
-}
-
-/* right side (price column) */
-.payg-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 240px;
-  height: 100%;
-}
-
-/* label styled like 'Minutes' label */
+/* 'Unlimited minutes a month' label */
 .unlimited-label {
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #9ca3af;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+/* Features — matching other cards */
+.payg-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payg-features li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: #4b5563;
   margin-bottom: 6px;
 }
 
-/* price + button pinned to bottom, button full width of right column */
+.payg-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.75rem;
+  color: #2075ae;
+  line-height: 1.4;
+}
+
+/* Right column */
+.payg-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-width: 240px;
+  text-align: right;
+}
+
 .payg-price {
   margin: 0;
   display: flex;
   align-items: baseline;
   gap: 6px;
+  justify-content: flex-end;
 }
+
 .payg-price-main {
-  font-size: 2rem;         /* prominent price */
-  font-weight: 800;
+  font-size: 2.3rem;
+  font-weight: 700;
   color: #2075ae;
 }
+
 .payg-price span:last-child {
   font-size: 0.95rem;
   color: #6b7280;
 }
 
-/* full-width button under the price at the bottom */
+/* Full-width bottom button under price */
 .payg-btn {
   width: 100%;
-  margin-top: auto;        /* push to bottom */
-  padding: 16px 26px;      /* keeps the 1.5x sizing you asked for */
+  margin-top: 12px;
+  padding: 16px 26px;
   font-size: 1rem;
   border-radius: 14px;
+  text-align: center;
 }
 
-/* responsive stack */
+/* Responsive layout */
 @media (max-width: 900px) {
   .payg-card {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 18px;
   }
   .payg-right {
     align-items: stretch;
+    text-align: left;
   }
   .payg-price {
     justify-content: space-between;
