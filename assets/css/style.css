@@ -1875,73 +1875,105 @@ input:checked + .slider:before {
 
 /* Pay-as-you-go full-width card */
 
+/* ----- PAYG redesigned as 2-column card ----- */
 .payg-card {
   margin-top: 10px;
-  padding: 20px 20px 18px;
+  padding: 20px;
   border-radius: 20px;
   background: #ffffff;
   border: 1px solid rgba(32,117,174,0.16);
   box-shadow: 0 6px 20px rgba(15,23,42,0.09);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;  /* features | price */
+  gap: 24px;
+  align-items: start;
 }
 
-.payg-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.payg-card h3 {
+/* left side */
+.payg-left h3 {
   font-size: 1rem;
   font-weight: 700;
   color: #111827;
-  margin: 0;
-}
-
-.payg-price {
-  margin: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-}
-
-.payg-price-main {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2075ae;
-}
-
-.payg-price span:last-child {
-  font-size: 0.9rem;
-  color: #6b7280;
+  margin: 0 0 6px;
 }
 
 .payg-features {
   list-style: none;
   padding: 0;
-  margin: 4px 0 4px;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 4px 16px;
-  font-size: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 6px 18px;
+  font-size: 0.85rem;
   color: #4b5563;
 }
-
 .payg-features li {
   position: relative;
   padding-left: 16px;
 }
-
 .payg-features li::before {
   content: "•";
   position: absolute;
   left: 0;
   top: 0;
   color: #2075ae;
+}
+
+/* right side (price column) */
+.payg-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 240px;
+  height: 100%;
+}
+
+/* label styled like 'Minutes' label */
+.unlimited-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+/* price + button pinned to bottom, button full width of right column */
+.payg-price {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.payg-price-main {
+  font-size: 2rem;         /* prominent price */
+  font-weight: 800;
+  color: #2075ae;
+}
+.payg-price span:last-child {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* full-width button under the price at the bottom */
+.payg-btn {
+  width: 100%;
+  margin-top: auto;        /* push to bottom */
+  padding: 16px 26px;      /* keeps the 1.5x sizing you asked for */
+  font-size: 1rem;
+  border-radius: 14px;
+}
+
+/* responsive stack */
+@media (max-width: 900px) {
+  .payg-card {
+    grid-template-columns: 1fr;
+  }
+  .payg-right {
+    align-items: stretch;
+  }
+  .payg-price {
+    justify-content: space-between;
+  }
 }
 
 /* Animations for value changes */
