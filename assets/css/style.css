@@ -147,27 +147,30 @@ body.nav-open {
   overflow: hidden;
 }
 
-/* Sign In button inside the nav overlay */
+/* Bigger, more prominent Sign In button inside overlay menu */
 .nav-links .signin-btn {
-  margin-top: 2rem;
+  margin-top: 3rem;
   text-align: center;
 }
 
 .nav-links .signin-btn a {
   display: inline-block;
-  padding: 0.75rem 1.75rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  color: #fff;
-  font-weight: 600;
+  padding: 1rem 2.5rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: #0a0a12; /* deep blue-black like Dealvox */
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 40px;
   text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
   transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
 }
 
 .nav-links .signin-btn a:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
 }
 
 
