@@ -156,8 +156,8 @@ body.nav-open {
 .nav-links .signin-btn a {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: rgba(255, 255, 255, 0.85);
-  color: #0a0a12; /* deep blue-black like Dealvox */
+  background: #2563ff;
+  color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 40px;
@@ -168,7 +168,7 @@ body.nav-open {
 }
 
 .nav-links .signin-btn a:hover {
-  background: #ffffff;
+  background: #3498db;
   transform: translateY(-2px);
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
 }
