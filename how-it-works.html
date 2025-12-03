@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About Us — Dealvox AI</title>
+  <title>How It Works — Dealvox AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ 'assets/css/form.css' | relative_url }}" />
@@ -13,6 +13,95 @@
 <body>
 
   {% include header.html %}
+
+  <!-- ========== ENHANCED FEATURES / 4 GRAPHIC STAGES ========== -->
+<section class="enhanced-features">
+  <div class="features-inner">
+
+    <header class="features-head">
+      <h2 class="features-title">From signup to closed deals in four visual stages</h2>
+      <p class="features-subtitle">
+        The flow is simple: deploy your assistant, connect a local number, feed it your product and playbook,
+        then plug it into your CRM or automation. Under the hood, Dealvox runs a custom training loop that
+        keeps improving call quality with every conversation.
+      </p>
+      <div class="features-underline"></div>
+    </header>
+
+    <!-- Stage 1: Choose persona + voice -->
+    <article class="feature-card">
+     <div class="feature-image">
+        <a href="/assets/images/account-signup.gif" class="lightbox-trigger">
+          <img src="/assets/images/account-signup.gif" alt="">
+        </a>
+     </div>
+
+      <div class="feature-content">
+        <h3 class="feature-title">Stage 1 · Choose persona, voice, and subscription</h3>
+        <p class="feature-text">
+          Create your Dealvox account and spin up an assistant in a few clicks. Pick one of the five
+          psychology-based personas, then choose a voice that matches your market: accent, gender, age,
+          and speaking style. Decide whether you prefer a subscription minute package or pay-as-you-go
+          calls and you’re ready to move to deployment.
+        </p>
+      </div>
+    </article>
+
+    <!-- Stage 2: Number + identity -->
+    <article class="feature-card">
+      <div class="feature-image">
+        <a href="/assets/images/custom-prompt.webp" class="lightbox-trigger">
+          <img src="/assets/images/custom-prompt.webp" alt="">
+        </a>
+     </div>
+      <div class="feature-content">
+        <h3 class="feature-title">Stage 2 · Connect a real phone number</h3>
+        <p class="feature-text">
+          Purchase a clean, local phone number directly in the interface. The number auto-links to your
+          assistant and becomes its caller ID. You can maintain multiple numbers across markets, test
+          separate campaigns, or segment by product line without touching telecom configs manually.
+        </p>
+      </div>
+    </article>
+
+    <!-- Stage 3: Knowledge + outcomes -->
+    <article class="feature-card">
+      <div class="feature-image">
+        <a href="/assets/images/custom-prompt.webp" class="lightbox-trigger">
+          <img src="/assets/images/custom-prompt.webp" alt="">
+        </a>
+     </div>
+      <div class="feature-content">
+        <h3 class="feature-title">Stage 3 · Train with your products and outcomes</h3>
+        <p class="feature-text">
+          Add an introductory prompt, define the assistant’s behaviour, and upload product descriptions,
+          features, benefits, and FAQs. Set the desired outcome: send a payment link, book a meeting, or
+          warm-transfer to a human agent. If you don’t have scripts ready, your personal Dealvox chat
+          assistant helps you draft prompts, talk tracks, and offer summaries on the spot.
+        </p>
+      </div>
+    </article>
+
+    <!-- Stage 4: Integrations + loop -->
+    <article class="feature-card">
+      <div class="feature-image">
+        <a href="/assets/images/custom-prompt.webp" class="lightbox-trigger">
+          <img src="/assets/images/custom-prompt.webp" alt="">
+        </a>
+     </div>
+      <div class="feature-content">
+        <h3 class="feature-title">Stage 4 · Automate calls from your CRM and close the loop</h3>
+        <p class="feature-text">
+          Dealvox exposes a secure endpoint where your CRM, ERP, or automation tool (n8n, Make, Zapier,
+          in-house APIs) can send call requests. A second webhook returns structured results for every call:
+          outcome, notes, intent, and next steps. The built-in training loop uses this data to refine
+          ice-breakers, discovery questions, objection handling, and closing behaviour over time.
+        </p>
+      </div>
+    </article>
+
+  </div>
+</section>
 
   <!-- ========== AGENT TYPES / PERSONAS ========== -->
 <section class="agent-types">
@@ -46,7 +135,7 @@
       <!-- Empathizer -->
       <article class="agent-card">
         <div class="agent-image">
-          <img src="/assets/images/persona-empathizer.webp" alt="The Empathizer voice persona illustration">
+          <img src="/assets/images/empathizer.jpg" alt="The Empathizer voice persona illustration">
         </div>
         <div class="agent-label">Persona #2</div>
         <div class="agent-name">The Empathizer</div>
@@ -61,7 +150,7 @@
       <!-- Driver -->
       <article class="agent-card">
         <div class="agent-image">
-          <img src="/assets/images/persona-driver.webp" alt="The Driver voice persona illustration">
+          <img src="/assets/images/driver.jpg" alt="The Driver voice persona illustration">
         </div>
         <div class="agent-label">Persona #3</div>
         <div class="agent-name">The Driver</div>
@@ -76,7 +165,7 @@
       <!-- Analyst -->
       <article class="agent-card">
         <div class="agent-image">
-          <img src="/assets/images/persona-analyst.webp" alt="The Analyst voice persona illustration">
+          <img src="/assets/images/analyst.jpg" alt="The Analyst voice persona illustration">
         </div>
         <div class="agent-label">Persona #4</div>
         <div class="agent-name">The Analyst</div>
@@ -91,7 +180,7 @@
       <!-- Storyteller -->
       <article class="agent-card">
         <div class="agent-image">
-          <img src="/assets/images/persona-storyteller.webp" alt="The Storyteller voice persona illustration">
+          <img src="/assets/images/storyteller.jpg" alt="The Storyteller voice persona illustration">
         </div>
         <div class="agent-label">Persona #5</div>
         <div class="agent-name">The Storyteller</div>
@@ -104,98 +193,9 @@
       </article>
 
     </div>
-
-    <div class="agent-cta">
-      <h3 class="agent-cta-title">Rent one agent, or run multiple personas in parallel</h3>
-      <p class="agent-cta-text">
-        Choose a single assistant for your main funnel or test different styles by campaign.
-        Pricing supports subscription minute packages or pay-as-you-go, so you can start small
-        and scale only what works.
-      </p>
-      <a href="/pricing/" class="agent-cta-button">Explore plans and minutes</a>
-    </div>
   </div>
 </section>
 
-<!-- ========== ENHANCED FEATURES / 4 GRAPHIC STAGES ========== -->
-<section class="enhanced-features">
-  <div class="features-inner">
-
-    <header class="features-head">
-      <h2 class="features-title">From signup to closed deals in four visual stages</h2>
-      <p class="features-subtitle">
-        The flow is simple: deploy your assistant, connect a local number, feed it your product and playbook,
-        then plug it into your CRM or automation. Under the hood, Dealvox runs a custom training loop that
-        keeps improving call quality with every conversation.
-      </p>
-      <div class="features-underline"></div>
-    </header>
-
-    <!-- Stage 1: Choose persona + voice -->
-    <article class="feature-card">
-      <div class="feature-image">
-        <img src="/assets/images/how-stage-1.webp" alt="Dashboard showing Dealvox personas and voice selection">
-      </div>
-      <div class="feature-content">
-        <h3 class="feature-title">Stage 1 · Choose persona, voice, and subscription</h3>
-        <p class="feature-text">
-          Create your Dealvox account and spin up an assistant in a few clicks. Pick one of the five
-          psychology-based personas, then choose a voice that matches your market: accent, gender, age,
-          and speaking style. Decide whether you prefer a subscription minute package or pay-as-you-go
-          calls and you’re ready to move to deployment.
-        </p>
-      </div>
-    </article>
-
-    <!-- Stage 2: Number + identity -->
-    <article class="feature-card">
-      <div class="feature-image">
-        <img src="/assets/images/how-stage-2.webp" alt="Interface for buying a local phone number and linking it to an assistant">
-      </div>
-      <div class="feature-content">
-        <h3 class="feature-title">Stage 2 · Connect a real phone number</h3>
-        <p class="feature-text">
-          Purchase a clean, local phone number directly in the interface. The number auto-links to your
-          assistant and becomes its caller ID. You can maintain multiple numbers across markets, test
-          separate campaigns, or segment by product line without touching telecom configs manually.
-        </p>
-      </div>
-    </article>
-
-    <!-- Stage 3: Knowledge + outcomes -->
-    <article class="feature-card">
-      <div class="feature-image">
-        <img src="/assets/images/how-stage-3.webp" alt="Assistant configuration panel with prompts, product data, and outcomes">
-      </div>
-      <div class="feature-content">
-        <h3 class="feature-title">Stage 3 · Train with your products and outcomes</h3>
-        <p class="feature-text">
-          Add an introductory prompt, define the assistant’s behaviour, and upload product descriptions,
-          features, benefits, and FAQs. Set the desired outcome: send a payment link, book a meeting, or
-          warm-transfer to a human agent. If you don’t have scripts ready, your personal Dealvox chat
-          assistant helps you draft prompts, talk tracks, and offer summaries on the spot.
-        </p>
-      </div>
-    </article>
-
-    <!-- Stage 4: Integrations + loop -->
-    <article class="feature-card">
-      <div class="feature-image">
-        <img src="/assets/images/how-stage-4.webp" alt="Diagram showing CRM sending call requests and receiving call results">
-      </div>
-      <div class="feature-content">
-        <h3 class="feature-title">Stage 4 · Automate calls from your CRM and close the loop</h3>
-        <p class="feature-text">
-          Dealvox exposes a secure endpoint where your CRM, ERP, or automation tool (n8n, Make, Zapier,
-          in-house APIs) can send call requests. A second webhook returns structured results for every call:
-          outcome, notes, intent, and next steps. The built-in training loop uses this data to refine
-          ice-breakers, discovery questions, objection handling, and closing behaviour over time.
-        </p>
-      </div>
-    </article>
-
-  </div>
-</section>
 
 <!-- ========== POST-CALL EXPLAINER: INSIDE A SINGLE CALL ========== -->
 <section class="post-call-explainer">
@@ -248,12 +248,16 @@
   <footer>
     © <span id="year-about"></span> Dealvox AI. All rights reserved.
   </footer>
-
+  
+  <div id="lightbox-overlay">
+     <img id="lightbox-img" src="" alt="">
+  </div>
+  
   <script>
     document.getElementById('year-about').textContent = new Date().getFullYear();
   </script>
   <script src="{{ 'assets/js/nav.js' | relative_url }}"></script>
   <script src="{{ 'assets/js/form.js' | relative_url }}"></script>
-
+  
   </body>
 </html>
