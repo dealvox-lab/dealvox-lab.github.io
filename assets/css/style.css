@@ -2045,3 +2045,28 @@ input:checked + .slider:before {
     text-align: left;
   }
 }
+
+/* === LIGHTBOX (Dealvox minimal) === */
+
+#lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+#lightbox-overlay img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: transform 0.3s ease;
+}
+
