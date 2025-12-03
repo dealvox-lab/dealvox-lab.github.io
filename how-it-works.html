@@ -249,15 +249,29 @@
     © <span id="year-about"></span> Dealvox AI. All rights reserved.
   </footer>
   
-  <div id="lightbox-overlay">
-     <img id="lightbox-img" src="" alt="">
-  </div>
-  
   <script>
     document.getElementById('year-about').textContent = new Date().getFullYear();
   </script>
   <script src="{{ 'assets/js/nav.js' | relative_url }}"></script>
   <script src="{{ 'assets/js/form.js' | relative_url }}"></script>
-  
+
+   <div id="lightbox-overlay">
+     <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    document.querySelectorAll('.lightbox-trigger').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const src = el.getAttribute('href');
+        const overlay = document.getElementById('lightbox-overlay');
+        document.getElementById('lightbox-img').src = src;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    document.getElementById('lightbox-overlay').addEventListener('click', () => {
+      document.getElementById('lightbox-overlay').style.display = 'none';
+    });
+  </script>
   </body>
 </html>
