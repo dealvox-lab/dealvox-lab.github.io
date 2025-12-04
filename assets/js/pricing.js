@@ -1,10 +1,9 @@
 // assets/js/pricing.js
 // ---------------------------------------------
 // Dealvox Pricing logic
-// - Minutes sliders
+// - Minutes sliders (discrete positions)
 // - Monthly / Yearly toggle
 // - Dynamic Stripe links for each tier
-// - Correct visual positions for uneven marks
 // ---------------------------------------------
 
 (function () {
@@ -104,34 +103,34 @@
   function initPricing() {
     const billingToggle = document.getElementById("billingToggle");
     const cards = document.querySelectorAll(".pricing-card[data-plan]");
-    let billingMode = billingToggle && billingToggle.checked ? "yearly" : "monthly";
 
     function getBillingMode() {
       return billingToggle && billingToggle.checked ? "yearly" : "monthly";
     }
 
-    // Position labels under the slider according to their real numeric value
-    function layoutMinutesMarks(card) {
-      const slider = card.querySelector(".minutes-slider");
-      const marks = card.querySelectorAll(".minutes-marks span[data-value]");
-      if (!slider || !marks.length) return;
+    function getTiersForCard(card, slider) {
+      // If data-tiers is present, use it (Growth)
+      const tiersAttr = slider.dataset.tiers;
+      if (tiersAttr) {
+        return tiersAttr.split(",").map((t) => parseInt(t.trim(), 10));
+      }
 
+      // Otherwise derive tiers from min/max/step (Starter)
       const min = Number(slider.min || 0);
-      const max = Number(slider.max || 100);
-      const range = max - min || 1;
-
-      marks.forEach((mark) => {
-        const value = Number(mark.dataset.value);
-        const pct = ((value - min) / range) * 100;
-        mark.style.left = pct + "%";
-      });
+      const max = Number(slider.max || 0);
+      const step = Number(slider.step || 1);
+      const arr = [];
+      for (let v = min; v <= max; v += step) {
+        arr.push(v);
+      }
+      return arr;
     }
 
-    function updateMinutesMarks(card, currentMinutes) {
+    function updateMinutesMarks(card, minutes) {
       const marks = card.querySelectorAll(".minutes-marks span[data-value]");
       marks.forEach((mark) => {
         const value = parseInt(mark.dataset.value, 10);
-        if (value === currentMinutes) {
+        if (value === minutes) {
           mark.classList.add("active");
         } else {
           mark.classList.remove("active");
@@ -140,7 +139,7 @@
     }
 
     function updateCardPricing(card) {
-      const plan = card.dataset.plan; // starter | growth | enterprise
+      const plan = card.dataset.plan;
       if (!PRICING_CONFIG[plan]) return; // skip enterprise
 
       const slider = card.querySelector(".minutes-slider");
@@ -150,7 +149,11 @@
 
       if (!slider || !priceTagEl || !buttonEl) return;
 
-      const minutes = parseInt(slider.value, 10);
+      const tiers = slider._tiers;
+      if (!tiers || !tiers.length) return;
+
+      const index = parseInt(slider.value, 10);
+      const minutes = tiers[index];
       const mode = getBillingMode();
       const planConfig = PRICING_CONFIG[plan][mode];
       if (!planConfig) return;
@@ -182,50 +185,42 @@
       const slider = card.querySelector(".minutes-slider");
       if (!slider) return;
 
-      // For Growth, snap to the nearest tier from data-tiers
-      const tiersAttr = slider.dataset.tiers;
-      let tiers = null;
-      if (tiersAttr) {
-        tiers = tiersAttr.split(",").map((t) => parseInt(t.trim(), 10));
+      // Build tiers and convert slider to 0..n-1 discrete positions
+      const tiers = getTiersForCard(card, slider);
+      slider._tiers = tiers;
+
+      slider.min = 0;
+      slider.max = tiers.length - 1;
+      slider.step = 1;
+
+      // Initial value: index 0 (first tier)
+      if (slider.value === "" || slider.value === undefined) {
+        slider.value = 0;
+      } else {
+        // Clamp existing value into range
+        let idx = parseInt(slider.value, 10);
+        if (isNaN(idx) || idx < 0) idx = 0;
+        if (idx > tiers.length - 1) idx = tiers.length - 1;
+        slider.value = idx;
       }
 
-      const snapToTier = () => {
-        if (tiers && tiers.length > 0) {
-          let raw = parseInt(slider.value, 10);
-          let closest = tiers[0];
-          let minDiff = Math.abs(raw - closest);
+      const onChange = () => updateCardPricing(card);
 
-          for (const t of tiers) {
-            const diff = Math.abs(raw - t);
-            if (diff < minDiff) {
-              minDiff = diff;
-              closest = t;
-            }
-          }
-          slider.value = closest;
-        }
-
-        updateCardPricing(card);
-      };
-
-      // On drag / change
-      slider.addEventListener("input", snapToTier);
-      slider.addEventListener("change", snapToTier);
+      slider.addEventListener("input", onChange);
+      slider.addEventListener("change", onChange);
 
       // Initial sync
-      snapToTier();
+      updateCardPricing(card);
     }
 
     // Initialize all cards
     cards.forEach((card) => {
-      layoutMinutesMarks(card); // place numeric labels correctly
-      attachSliderLogic(card);  // hook slider + pricing logic
+      attachSliderLogic(card);
     });
 
     // Billing toggle (Monthly / Yearly)
     if (billingToggle) {
       billingToggle.addEventListener("change", () => {
-        billingMode = getBillingMode();
         cards.forEach((card) => updateCardPricing(card));
       });
     }
