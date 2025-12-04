@@ -1796,19 +1796,11 @@ input:checked + .slider:before {
 }
 
 .minutes-marks {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   font-size: 0.7rem;
   color: #9ca3af;
   margin-bottom: 4px;
-  height: 16px;          /* enough height for labels */
-}
-
-/* remove flex + space-between from here */
-/* .minutes-marks { display:flex; justify-content:space-between; } */
-
-.minutes-marks span {
-  position: absolute;
-  transform: translateX(-50%); /* center label on its point */
 }
 
 .minutes-marks span.active {
