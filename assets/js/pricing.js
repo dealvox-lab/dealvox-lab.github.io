@@ -4,6 +4,7 @@
 // - Minutes sliders
 // - Monthly / Yearly toggle
 // - Dynamic Stripe links for each tier
+// - Correct visual positions for uneven marks
 // ---------------------------------------------
 
 (function () {
@@ -109,6 +110,23 @@
       return billingToggle && billingToggle.checked ? "yearly" : "monthly";
     }
 
+    // Position labels under the slider according to their real numeric value
+    function layoutMinutesMarks(card) {
+      const slider = card.querySelector(".minutes-slider");
+      const marks = card.querySelectorAll(".minutes-marks span[data-value]");
+      if (!slider || !marks.length) return;
+
+      const min = Number(slider.min || 0);
+      const max = Number(slider.max || 100);
+      const range = max - min || 1;
+
+      marks.forEach((mark) => {
+        const value = Number(mark.dataset.value);
+        const pct = ((value - min) / range) * 100;
+        mark.style.left = pct + "%";
+      });
+    }
+
     function updateMinutesMarks(card, currentMinutes) {
       const marks = card.querySelectorAll(".minutes-marks span[data-value]");
       marks.forEach((mark) => {
@@ -164,8 +182,6 @@
       const slider = card.querySelector(".minutes-slider");
       if (!slider) return;
 
-      const plan = card.dataset.plan;
-
       // For Growth, snap to the nearest tier from data-tiers
       const tiersAttr = slider.dataset.tiers;
       let tiers = null;
@@ -202,7 +218,8 @@
 
     // Initialize all cards
     cards.forEach((card) => {
-      attachSliderLogic(card);
+      layoutMinutesMarks(card); // place numeric labels correctly
+      attachSliderLogic(card);  // hook slider + pricing logic
     });
 
     // Billing toggle (Monthly / Yearly)
@@ -213,7 +230,7 @@
       });
     }
 
-    // OPTIONAL: Pay-as-you-go button link (if you have one)
+    // OPTIONAL: Pay-as-you-go button link
     // const paygBtn = document.querySelector(".payg-btn");
     // if (paygBtn) {
     //   paygBtn.onclick = () =>
