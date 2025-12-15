@@ -29,15 +29,15 @@
       yearly: {
         200: {
           price: 2629,
-          link: "https://buy.stripe.com/test_7sY4gz7Lw8PLfkG1owfYY04"
+          link: "https://buy.stripe.com/test_14A7sL6Hs4zv2xUgjqfYY0i"
         },
         300: {
           price: 3729,
-          link: "https://buy.stripe.com/test_4gM14n5Dofe9fkG9V2fYY05"
+          link: "https://buy.stripe.com/test_fZu14nfdYea51tQ3wEfYY0j"
         },
         400: {
           price: 4829,
-          link: "https://buy.stripe.com/test_dRm28r0j4gida0mc3afYY06"
+          link: "https://buy.stripe.com/test_fZucN53vgfe91tQ4AIfYY0k"
         }
       }
     },
@@ -75,23 +75,23 @@
         },
         1000: {
           price: 8990,
-          link: "https://buy.stripe.com/test_3cIbJ13vg6HD0pM7MUfYY0d"
+          link: "https://buy.stripe.com/test_28EeVd6Hs8PL5K6c3afYY0m"
         },
         1500: {
           price: 11990,
-          link: "https://buy.stripe.com/test_dRmaEX9TEea51tQ7MUfYY0e"
+          link: "https://buy.stripe.com/test_fZu7sLgi24zv2xUaZ6fYY0n"
         },
         2000: {
           price: 15990,
-          link: "https://buy.stripe.com/test_14A8wP0j41nj6Oa7MUfYY0f"
+          link: "https://buy.stripe.com/test_fZucN56Hsc1X7SeebifYY0o"
         },
         3000: {
           price: 21490,
-          link: "https://buy.stripe.com/test_28E6oH4zkfe9a0m6IQfYY0g"
+          link: "https://buy.stripe.com/test_14AeVd0j4ea5dcyebifYY0p"
         },
         5000: {
           price: 36990,
-          link: "https://buy.stripe.com/test_6oU4gzc1M2rn3BY7MUfYY0h"
+          link: "https://buy.stripe.com/test_eVq8wP7Lw1njc8uaZ6fYY0q"
         }
       }
     }
@@ -146,6 +146,7 @@
       const minutesDisplayEl = card.querySelector(".minutes-display");
       const priceTagEl = card.querySelector(".price-tag");
       const buttonEl = card.querySelector(".pricing-btn");
+      const rateEl = card.querySelector(".effective-rate");
 
       if (!slider || !priceTagEl || !buttonEl) return;
 
@@ -172,6 +173,13 @@
         maximumFractionDigits: 0
       });
       priceTagEl.innerHTML = `$${formattedPrice}<span>/${periodLabel}</span>`;
+
+       // ✅ Effective rate (yearly normalized to /mo)
+  if (rateEl && minutes > 0) {
+    const periodPrice = mode === "yearly" ? (tier.price / 12) : tier.price;
+    const perMin = periodPrice / minutes;
+    rateEl.textContent = `≈ $${perMin.toFixed(2)} / min`;
+  }
 
       // Update button click → Stripe link
       buttonEl.onclick = function () {
