@@ -1,7 +1,7 @@
 // assets/js/form.js
 
 // 1) Set your webhook endpoint here
-const WEBHOOK_URL = "https://hook.us1.make.com/s3iatdvrdtqgalae2z51hrpa6fthwa41";
+const WEBHOOK_URL = "https://dealvox-840984531750.us-east4.run.app/webhook-test/4757abb5-c3d0-42d3-a57d-50e9e71e4f6a";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("ai-test-call-form");
