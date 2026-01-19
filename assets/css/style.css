@@ -608,14 +608,13 @@ body.nav-open {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.feature-card:nth-child(2n + 2) {
-  /* alternate layout for 2nd, 4th etc. */
-  grid-template-columns: 1fr 1fr;
+/* Alternate layout ONLY for even feature cards (ignores the header) */
+.features-inner > .feature-card:nth-of-type(even) {
   direction: rtl;
   text-align: left;
 }
 
-.feature-card:nth-child(2n + 2) .feature-content {
+.features-inner > .feature-card:nth-of-type(even) .feature-content {
   direction: ltr;
 }
 
@@ -676,8 +675,11 @@ body.nav-open {
     gap: 26px;
   }
 
-  .feature-card {
+ .feature-card,
+  .features-inner > .feature-card:nth-of-type(even) {
     grid-template-columns: 1fr;
+    direction: ltr;
+    text-align: left;
   }
 
   .feature-image {
