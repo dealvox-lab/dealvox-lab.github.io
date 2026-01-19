@@ -693,6 +693,7 @@ body.nav-open {
   background: #2075ae;
   color: #ffffff;
   padding: 64px 0 54px;
+  margin-top: 10px;
 }
 
 .ai-metrics-inner {
